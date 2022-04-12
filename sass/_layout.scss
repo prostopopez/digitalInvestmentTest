@@ -1,0 +1,263 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open-Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    transition: all 0.3s linear;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+label {
+    margin: 0;
+}
+
+a,
+button,
+input,
+textarea,
+a.active.focus,
+a.active:focus,
+a.focus,
+a:active.focus,
+a:active:focus,
+a:focus,
+button.active.focus,
+button.active:focus,
+button:active,
+button.focus,
+button:active.focus,
+button:active:focus,
+button:focus,
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn:active:focus,
+.btn:focus,
+input:focus,
+textarea:focus {
+    outline: 0 !important;
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: none;
+}
+
+button::-moz-focus-inner {
+    border: 0;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ol {
+    list-style-position: inside;
+}
+
+p,
+ul {
+    margin: 0;
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1170px;
+
+    @media only screen and (min-width: 2500px) {
+        max-width: 1600px;
+    }
+
+    @media only screen and (max-width: 1024px) {
+        max-width: 768px;
+    }
+}
+
+body {
+    background-color: $white;
+    color: $darkBlue;
+
+    &.noScroll {
+        height: 100vh;
+        width: 100%;
+        position: fixed;
+        overflow-y: scroll;
+    }
+}
+
+a {
+    text-decoration: none !important;
+    color: $darkBlue;
+
+    &:hover {
+        color: $blueHover;
+    }
+
+    &:active {
+        color: $blueClick;
+    }
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    padding: 18px 40px;
+    min-width: 200px;
+    max-width: 200px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+
+    @media only screen and (max-width: 1024px) {
+        padding: 12px 24px;
+    }
+
+    @media only screen and (max-width: 768px) {
+        padding: 8px 16px;
+    }
+}
+
+.tag {
+    display: inline-block;
+    border-radius: 3px;
+    padding: 5px 15px;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.search {
+    position: relative;
+    width: 200px;
+    height: 48px;
+
+    @media only screen and (min-width: 1025px) {
+        &.inactive {
+            width: 22px;
+            height: 22px;
+
+            input {
+                border: none;
+                padding: 0;
+                background-color: transparent;
+                color: transparent;
+            }
+
+            input::placeholder {
+                opacity: 0;
+            }
+
+            &:hover {
+                input {
+                    cursor: pointer;
+                }
+
+                svg {
+                    opacity: 1;
+                }
+            }
+
+            svg {
+                opacity: 0.16;
+                top: 0;
+                right: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    .searchBlock {
+        width: 100%;
+        height: 100%;
+    }
+
+    input {
+        border-radius: 40px;
+        padding: 12px 44px 12px 16px;
+        width: 100%;
+        height: 100%;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    svg {
+        pointer-events: none;
+        position: absolute;
+        top: 12px;
+        right: 16px;
+        width: 22px;
+        height: 22px;
+    }
+}
+
+.modalAnimation {
+    animation: SHW .3s;
+    animation-fill-mode: both
+}
+
+@keyframes SHW {
+    from {
+        transform: scale(0);
+        opacity: 0
+    }
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.dropdown {
+    position: relative;
+
+    .dropTrigger {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        svg {
+            transition: 0.2s transform ease-in-out;
+        }
+
+        &.whileOpened svg {
+            transform: rotate(-180deg) !important;
+        }
+    }
+
+    .dropContent {
+        display: none;
+        position: absolute;
+        flex-direction: column;
+        z-index: 1;
+        margin-top: 8px;
+        box-shadow: 0 10px 23px rgba(0, 0, 0, 0.07);
+        padding: 24px;
+        min-width: 100%;
+
+        li {
+            margin-bottom: 14px;
+
+            a {
+                white-space: nowrap;
+            }
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+
+        &.openDrop {
+            display: flex !important;
+        }
+    }
+}

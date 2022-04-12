@@ -1,0 +1,67 @@
+<header class="header">
+    <div class="secondaryMenu">
+        <div class="wrapper">
+            <div class="dropdown langChange">
+                <div class="dropTrigger">
+                    <p>RU</p>
+                    {% include '../../img/svg/arrowTip.svg' %}
+                </div>
+                <ul class="dropContent">
+                    <li><label>
+                        <span>RU</span>
+                        <input type="radio" name="lang" checked>
+                    </label></li>
+                    <li><label>
+                        <span>EN</span>
+                        <input type="radio" name="lang">
+                    </label></li>
+                </ul>
+            </div>
+            <div class="contacts">
+                <p class="hospitalAppointment">Запись на приём</p>
+                <div class="socialsTel">
+                    <div>
+                        <a class="socialLink" href="https://www.whatsapp.com">
+                        </a>
+                        <a class="socialLink" href="https://web.telegram.org">
+                            {% include '../../img/svg/telegram.svg' %}
+                        </a>
+                        <a class="socialLink" href="https://www.viber.com">
+                            {% include '../../img/svg/whatsapp.svg' %}
+                        </a>
+                    </div>
+                    <p>8 (495) 540-48-03</p>
+                </div>
+                <p class="mainEmail">medgorod@bk.ru</p>
+            </div>
+        </div>
+    </div>
+    <div class="mainMenu">
+        <div class="wrapper">
+            <div class="forMenu">
+                <a class="toHome" href="/">
+                </a>
+                <nav>
+                    <button class="hamburger">
+                        {% include '../../img/svg/hamburger.svg' with {'class': 'closed'} %}
+                        {% include '../../img/svg/hamburgerActive.svg' with {'class': 'opened'} %}
+                    </button>
+                    <ul>
+                        {% for item in mainMenuData %}-->
+                        <li><a href="/">{{item.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+            <div class="interactive">
+                <div class="search inactive">
+                    <label class="searchBlock" for="topSearch">
+                        <input class="inputField" type="text" placeholder="Поиск" id="topSearch">
+                        {% include '../../img/svg/search.svg' with {'class': 'searchIcon'} %}
+                    </label>
+                </div>
+                <button class="button orange callBack">Обратный звонок</button>
+            </div>
+        </div>
+    </div>
+</header>

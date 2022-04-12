@@ -1,0 +1,379 @@
+.header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-shadow: 0 60px 96px rgba(0, 0, 0, 0.007), 0 30px 48px rgba(0, 0, 0, 0.01), 0 18px 29px rgba(0, 0, 0, 0.01), 0 12px 19px rgba(0, 0, 0, 0.015), 0 8px 12px rgba(0, 0, 0, 0.02), 0 5px 8px rgba(0, 0, 0, 0.02), 0 3px 4px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.03);
+    background-color: $white;
+
+    .secondaryMenu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 0;
+        background-color: $darkBlue;
+    }
+
+    .langChange {
+        .dropContent {
+            overflow-y: scroll;
+            border-radius: 5px;
+            padding: 8px 0;
+            max-height: 200px;
+            filter: drop-shadow(0 60px 96px rgba(0, 0, 0, 0.007)) drop-shadow(0 30px 48px rgba(0, 0, 0, 0.01)) drop-shadow(0 18px 29px rgba(0, 0, 0, 0.01)) drop-shadow(0 12px 19px rgba(0, 0, 0, 0.015)) drop-shadow(0 8px 12px rgba(0, 0, 0, 0.02)) drop-shadow(0 5px 8px rgba(0, 0, 0, 0.02)) drop-shadow(0 3px 4px rgba(0, 0, 0, 0.02)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.03));
+            background-color: $white;
+        }
+
+        .dropTrigger p {
+            padding-right: 2px;
+            font-size: 12px;
+            font-weight: 600;
+            color: $white;
+        }
+
+        svg {
+            fill: $darkBlue;
+        }
+
+        li {
+            font-size: 20px;
+
+            span {
+                color: $darkBlue;
+                opacity: 0.78;
+            }
+
+            &.active {
+                span {
+                    color: $white !important;
+                    opacity: 1;
+                }
+            }
+
+            &:hover {
+                span {
+                    color: $blueHover;
+                    transition: none;
+                }
+
+                filter: drop-shadow(0 0 3px $white);
+            }
+        }
+
+        label {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+            -o-appearance: none;
+            appearance: none;
+            height: 20px;
+            width: 20px;
+
+            &:hover {
+                background-image: url('../img/svg/checkHover.svg');
+            }
+
+            &:checked {
+                opacity: 1;
+            }
+        }
+
+        input:checked::before {
+            content: ' ';
+            display: flex;
+            width: 20px;
+            height: 20px;
+            background-image: url('../img/svg/check.svg');
+        }
+    }
+
+    .contacts {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        .hospitalAppointment {
+            opacity: 0.6;
+        }
+
+        .socialsTel {
+            display: flex;
+
+            div {
+                display: flex;
+            }
+
+            p {
+                margin-left: 16px;
+                font-size: 24px;
+                font-weight: 700;
+            }
+        }
+
+        .mainEmail {
+            font-weight: 600;
+        }
+
+        .socialLink {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 4px;
+            border-radius: 40px;
+            padding: 7px;
+            width: 32px;
+            height: 32px;
+            background-color: $darkBlue;
+
+            svg {
+                fill: #FFFFFF;
+            }
+
+            &:hover {
+                background-color: $blueClick;
+            }
+        }
+    }
+
+    .mainMenu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 17px 0;
+
+        .forMenu {
+            margin-right: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .toHome {
+                margin-right: 40px;
+
+                .homeIcon {
+                    opacity: 0.16;
+                }
+
+                &:hover {
+                    .homeIcon {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .mainMenu nav {
+        .hamburger {
+            display: flex;
+            margin-right: 16px;
+
+            svg {
+                width: 24px;
+            }
+
+            svg.opened {
+                display: none;
+                z-index: 1010;
+            }
+
+            svg.closed {
+                display: block;
+            }
+        }
+
+        ul {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        li {
+            margin-right: 30px;
+            padding-right: 30px;
+
+            &:not(:last-of-type) {
+            }
+
+            &:last-of-type {
+                margin-right: 0;
+                padding-right: 0;
+            }
+
+            @media only screen and (max-width: 1200px) {
+                margin-right: 15px;
+                padding-right: 15px;
+            }
+        }
+
+        li a {
+            text-transform: uppercase;
+            white-space: nowrap;
+            font-size: 16px;
+            font-weight: 800;
+        }
+    }
+
+    .interactive {
+        display: flex;
+        align-items: center;
+
+        .search {
+            margin-right: 40px;
+        }
+
+        .callBack {
+            box-shadow: 0 4px 16px rgba(255, 140, 105, 0.29);
+            padding: 14px 32px;
+            font-size: 16px;
+        }
+    }
+
+    @media only screen and (max-width: 1024px) {
+        .secondaryMenu .contacts,
+        .secondaryMenu .clinicsNearby,
+        .toHome,
+        .mainMenu ul,
+        .interactive {
+            display: none;
+        }
+
+        .wrapper {
+            justify-content: space-between;
+        }
+
+        .secondaryMenu,
+        .mainMenu {
+            padding: 0;
+        }
+
+        .mainMenu nav .hamburger,
+        .mainMenu .forMenu {
+            margin-right: 0;
+        }
+
+        &.mobile {
+            overflow-y: scroll;
+            justify-content: center;
+            align-items: flex-start;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 14px 0;
+            height: 100%;
+            z-index: 1005;
+
+            .wrapper {
+                flex-direction: column;
+                padding: 0;
+            }
+
+            .secondaryMenu {
+                order: 1;
+
+                .forLogo {
+                    display: none;
+                }
+
+                .contacts {
+                    align-items: center;
+                    width: 100%;
+
+                    > * {
+                        margin-bottom: 15px;
+                    }
+
+                    .socialsTel {
+                        flex-direction: column;
+
+                        div {
+                            justify-content: space-evenly;
+                            margin-bottom: 15px;
+
+                            .socialLink {
+                                margin-right: 0;
+                            }
+                        }
+
+                        p {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+
+            .mainMenu {
+                order: 0;
+                flex-direction: column;
+                margin-bottom: 50px;
+
+                .forMenu {
+                    flex-direction: column;
+
+                    .toHome {
+                        margin-right: 0;
+                        margin-bottom: 15px;
+                    }
+                }
+            }
+
+            .secondaryMenu .contacts,
+            .secondaryMenu .clinicsNearby,
+            .toHome,
+            .mainMenu ul,
+            .interactive {
+                display: flex;
+            }
+
+            .mainMenu nav {
+                .hamburger {
+                    position: absolute;
+                    top: 13px;
+                    right: 0;
+
+                    .opened {
+                        display: flex;
+                    }
+
+                    .closed {
+                        display: none;
+                    }
+                }
+
+                ul {
+                    flex-direction: column;
+
+                    li {
+                        margin-right: 0;
+                        margin-bottom: 15px;
+                        padding-right: 0;
+                        border: none;
+                    }
+                }
+            }
+
+            .interactive {
+                flex-direction: column;
+
+                .search {
+                    margin-right: 0;
+                    margin-bottom: 15px;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+
+    }
+}
