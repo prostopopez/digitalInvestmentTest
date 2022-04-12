@@ -1,16 +1,17 @@
-// Поиск
-const search = document.querySelector(`.search`);
-const searchToggle = document.querySelector(`.search .inputField`);
+// Список языков
+const langChange = document.querySelector(`.langChange`);
+let dropElements = langChange.querySelectorAll(`li`);
 
-searchToggle.onfocus = function () {
-    search.classList.remove('inactive');
-    search.classList.remove(`modalAnimation`);
-};
+for (let i = 0; i < dropElements.length; i++) {
+    dropElements[i].addEventListener('click', function (event) {
+        for (let i = 0; i < dropElements.length; i++) {
+            dropElements[i].classList.remove(`active`);
+        }
 
-searchToggle.onblur = function () {
-    search.classList.add('inactive');
-    search.classList.add(`modalAnimation`);
-};
+        dropElements[i].classList.add(`active`);
+        langChange.querySelector('.dropTrigger p').innerHTML = dropElements[i].querySelector('span').innerHTML;
+    });
+}
 
 // Мобильное меню
 const mobileButtons = document.querySelector('.hamburger');
