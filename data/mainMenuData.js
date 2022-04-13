@@ -1,7 +1,7 @@
 module.exports = [
     {
         name: 'Каталог',
-        src: '../catalog'
+        link: '../catalog'
     },
     {
         type: 'dropdown',
@@ -9,20 +9,20 @@ module.exports = [
         elements: [
             {
                 name: 'Калининская АЭС',
-                src: '../kalininskaya'
+                link: '../kalininskaya'
             },
             {
                 name: 'ПАО “Тулачермет”',
-                src: '../tulachermet'
+                link: '../tulachermet'
             }
         ]
     },
     {
         name: 'Лизинг',
-        src: '../leasing'
+        link: '../leasing'
     },
     {
         name: 'О компании',
-        src: '../aboutUs'
+        link: '../aboutUs'
     }
 ];

@@ -1,3 +1,30 @@
+// Выпадающие списки
+const dropdown = document.querySelectorAll(`.dropdown`);
+
+for (let i = 0; i < dropdown.length; i++) {
+    let dropBody = dropdown[i].querySelector(`.dropTrigger`);
+    let dropContent = dropdown[i].querySelector(`.dropContent`);
+
+    dropBody.addEventListener('click', function (event) {
+        if (dropBody.contains(dropBody)) {
+            let toOpen = dropContent.classList.contains('openDrop');
+            toggleFilterButton(toOpen, dropContent, dropBody);
+        }
+    });
+}
+
+function toggleFilterButton(toClose, dropContent, dropBody) {
+    if (toClose) {
+        dropContent.classList.remove(`openDrop`);
+        dropBody.classList.remove(`whileOpened`);
+        dropContent.classList.remove(`modalAnimation`);
+    } else {
+        dropContent.classList.add(`openDrop`);
+        dropBody.classList.add(`whileOpened`);
+        dropContent.classList.add(`modalAnimation`);
+    }
+}
+
 // Список языков
 const langChange = document.querySelector(`.langChange`);
 let dropElements = langChange.querySelectorAll(`li`);
@@ -36,44 +63,5 @@ function toggleMobileMainMenu(val) {
 }
 
 mobileButtons.addEventListener(`click`, function () {
-    if (window.screen.width < 1025) {
-        toggleMobileMainMenu(!isOpenMobileMainMenu);
-    }
+    toggleMobileMainMenu(!isOpenMobileMainMenu);
 });
-
-// Выпадающие списки
-const dropdown = document.querySelectorAll(`.dropdown`);
-
-for (let i = 0; i < dropdown.length; i++) {
-    let dropBody = dropdown[i].querySelector(`.dropTrigger`);
-    let dropContent = dropdown[i].querySelector(`.dropContent`);
-    let mobileMainMenu = document.querySelector(`.mainMenu nav`);
-
-    dropBody.addEventListener('click', function (event) {
-        if (dropBody.contains(dropBody)) {
-            let toOpen = dropContent.classList.contains('openDrop');
-
-            if (dropdown[i].classList.contains('resources')) {
-                if (dropBody.classList.contains('whileOpened')) {
-                    mobileMainMenu.classList.remove('hide');
-                } else {
-                    mobileMainMenu.classList.add('hide');
-                }
-            }
-
-            toggleFilterButton(toOpen, dropContent, dropBody);
-        }
-    });
-}
-
-function toggleFilterButton(toClose, dropContent, dropBody) {
-    if (toClose) {
-        dropContent.classList.remove(`openDrop`);
-        dropBody.classList.remove(`whileOpened`);
-        dropContent.classList.remove(`modalAnimation`);
-    } else {
-        dropContent.classList.add(`openDrop`);
-        dropBody.classList.add(`whileOpened`);
-        dropContent.classList.add(`modalAnimation`);
-    }
-}

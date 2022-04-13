@@ -44,6 +44,22 @@ textarea:focus {
     outline: 0 !important;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    background-color: transparent !important;
+    border: initial !important;
+    -webkit-text-fill-color: initial !important;
+    -webkit-box-shadow: initial !important;
+    transition: initial !important;
+}
+
 button {
     cursor: pointer;
     outline: none;
@@ -95,8 +111,29 @@ body {
 }
 
 a {
+    cursor: pointer;
     text-decoration: none !important;
     color: $darkBlue;
+
+    &:hover {
+        color: $blueHover;
+
+        svg {
+            fill: $blueHover !important;
+        }
+    }
+
+    &:active {
+        color: $blueClick;
+
+        svg {
+            fill: $blueClick !important;
+        }
+    }
+}
+
+button {
+    color: rgba($darkBlue, 0.5);
 
     &:hover {
         color: $blueHover;
@@ -142,22 +179,6 @@ a {
     }
 }
 
-.modalAnimation {
-    animation: SHW .3s;
-    animation-fill-mode: both
-}
-
-@keyframes SHW {
-    from {
-        transform: scale(0);
-        opacity: 0
-    }
-    to {
-        transform: scale(1);
-        opacity: 1
-    }
-}
-
 .dropdown {
     position: relative;
 
@@ -165,6 +186,10 @@ a {
         display: flex;
         align-items: center;
         cursor: pointer;
+
+        p {
+            padding-right: 4px;
+        }
 
         svg {
             transition: 0.2s transform ease-in-out;
@@ -178,19 +203,68 @@ a {
     .dropContent {
         display: none;
         position: absolute;
+        left: 0;
         flex-direction: column;
         z-index: 1;
         margin-top: 4px;
-        box-shadow: 0 10px 23px rgba(0, 0, 0, 0.07);
-        padding: 24px;
         min-width: 100%;
 
-        li a {
-            white-space: nowrap;
+        li {
+            cursor: pointer;
+            padding: 10px 16px;
+
+            span,
+            a {
+                cursor: pointer;
+                font-weight: initial !important;
+                white-space: nowrap;
+                color: rgba($darkBlue, 0.8);
+            }
+
+            &.active {
+                span,
+                a {
+                    color: rgba($blue, 0.8);
+                }
+            }
+
+            &:hover {
+                background-color: $grayv2;
+
+                span,
+                a {
+                    color: $blueHover;
+                }
+            }
         }
 
         &.openDrop {
             display: flex !important;
         }
+    }
+
+    &.modal {
+        .dropContent {
+            border-radius: 5px;
+            padding: 8px 0;
+            filter: drop-shadow(0 60px 96px rgba(0, 0, 0, 0.007)) drop-shadow(0 30px 48px rgba(0, 0, 0, 0.01)) drop-shadow(0 18px 29px rgba(0, 0, 0, 0.01)) drop-shadow(0 12px 19px rgba(0, 0, 0, 0.015)) drop-shadow(0 8px 12px rgba(0, 0, 0, 0.02)) drop-shadow(0 5px 8px rgba(0, 0, 0, 0.02)) drop-shadow(0 3px 4px rgba(0, 0, 0, 0.02)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.03));
+            background-color: $white;
+        }
+    }
+}
+
+.modalAnimation {
+    animation: SHW .3s;
+    animation-fill-mode: both
+}
+
+@keyframes SHW {
+    from {
+        transform: scale(0);
+        opacity: 0
+    }
+    to {
+        transform: scale(1);
+        opacity: 1
     }
 }

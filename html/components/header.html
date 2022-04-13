@@ -1,7 +1,7 @@
 <header class="header">
     <div class="secondaryMenu">
         <div class="wrapper">
-            <div class="dropdown langChange">
+            <div class="dropdown modal langChange">
                 <div class="dropTrigger">
                     <p>RU</p>
                     {% include '../../img/svg/arrowTip.svg' %}
@@ -20,7 +20,7 @@
             <nav>
                 <ul>
                     {% for item in secondaryMenuData %}
-                    <li><a href="{{item.src}}">{{item.name}}</a></li>
+                    <li><a href="{{item.link}}">{{item.name}}</a></li>
                     {% endfor %}
                 </ul>
             </nav>
@@ -33,28 +33,47 @@
     <div class="mainMenu">
         <div class="wrapper">
             <nav>
-                <!--                <button class="hamburger">-->
-                <!--                    {% include '../../img/svg/hamburger.svg' %}-->
-                <!--                    {% include '../../img/svg/hamburgerActive.svg' %}-->
-                <!--                </button>-->
                 <ul>
                     {% for item in mainMenuData %}
-                    <li><a href='{{item.src}}'>{{item.name}}</a></li>
+                    {% if item.type == 'dropdown' %}
+                    <li class="dropdown modal menuDrop">
+                        <div class="dropTrigger">
+                            <p>{{item.name}}</p>
+                            {% include '../../img/svg/chevron-down.svg' %}
+                        </div>
+                        <ul class="dropContent">
+                            {% for element in item.elements %}
+                            <li>
+                                <a href="{{element.link}}">{{element.name}}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li><a href='{{item.link}}'>{{item.name}}</a></li>
+                    {% endif %}
                     {% endfor %}
                 </ul>
             </nav>
             <div class="menuInfo">
                 <div class="contacts">
-                    <p>+7 (499) 877-41-45</p>
-                    <div>
-                        <a href=""> {% include '../../img/svg/telegram.svg' %}</a>
-                        <a href=""> {% include '../../img/svg/whatsapp.svg' %}</a>
+                    <p class="tel">+7 (499) 877-41-45</p>
+                    <div class="interactive">
+                        <a href="https://web.telegram.org"> {% include '../../img/svg/telegram.svg' %}</a>
+                        <a href="https://www.whatsapp.com"> {% include '../../img/svg/whatsapp.svg' %}</a>
                         <button>Заказать звонок</button>
                     </div>
                 </div>
-                <button class="toBasket">
-                    {% include '../../img/svg/shopping-bag.svg' %}
+                <a href="../basket" class="toBasket isNotEmpty">
+                    <div class="basketCount">
+                        {% include '../../img/svg/shopping-bag.svg' %}
+                        <span>2</span>
+                    </div>
                     <span>Корзина</span>
+                </a>
+                <button class="hamburger">
+                    {% include '../../img/svg/hamburger.svg' %}
+                    {% include '../../img/svg/hamburgerActive.svg' %}
                 </button>
             </div>
         </div>

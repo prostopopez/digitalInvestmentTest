@@ -13,10 +13,10 @@
         align-items: center;
     }
 
-    nav ul {
+    nav > ul {
         display: flex;
 
-        li {
+        > li {
             display: flex;
             align-items: center;
             text-align: center;
@@ -53,15 +53,7 @@
     }
 
     .langChange {
-        .dropContent {
-            border-radius: 5px;
-            padding: 8px 0;
-            filter: drop-shadow(0 60px 96px rgba(0, 0, 0, 0.007)) drop-shadow(0 30px 48px rgba(0, 0, 0, 0.01)) drop-shadow(0 18px 29px rgba(0, 0, 0, 0.01)) drop-shadow(0 12px 19px rgba(0, 0, 0, 0.015)) drop-shadow(0 8px 12px rgba(0, 0, 0, 0.02)) drop-shadow(0 5px 8px rgba(0, 0, 0, 0.02)) drop-shadow(0 3px 4px rgba(0, 0, 0, 0.02)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.03));
-            background-color: $white;
-        }
-
         .dropTrigger p {
-            padding-right: 4px;
             font-size: 12px;
             font-weight: 600;
             color: $white;
@@ -72,31 +64,35 @@
         }
 
         li {
-            cursor: pointer;
-            padding: 5px 16px;
-
-            span {
-                cursor: pointer;
-                color: rgba($darkBlue, 0.8);
-            }
-
-            &.active {
-                span {
-                    color: rgba($blue, 0.8);
-                }
-            }
-
-            &:hover {
-                background-color: $grayv2;
-
-                span {
-                    color: $blueHover;
-                }
-            }
+            padding-top: 5px;
+            padding-bottom: 5px;
         }
 
         input {
             display: none;
+        }
+    }
+
+    .menuDrop {
+        display: initial;
+
+        .dropTrigger.whileOpened {
+            p {
+                color: $blue;
+            }
+
+            svg {
+                stroke: $blue;
+            }
+        }
+
+        .dropContent {
+            margin-top: 25px;
+        }
+
+        svg {
+            fill: transparent;
+            stroke: $darkBlue;
         }
     }
 
@@ -108,34 +104,15 @@
         }
 
         nav {
-            display: flex;
+            margin-right: 130px;
+        }
+
+        nav > ul {
             align-items: center;
+            flex-wrap: wrap;
 
-            .hamburger {
-                display: flex;
-                margin-right: 16px;
-
-                svg {
-                    width: 24px;
-                }
-
-                svg.opened {
-                    display: none;
-                    z-index: 1010;
-                }
-
-                svg.closed {
-                    display: block;
-                }
-            }
-
-            ul {
-                display: flex;
-                align-items: center;
-                flex-wrap: wrap;
-            }
-
-            li a {
+            > li a,
+            > li p {
                 white-space: nowrap;
                 font-weight: 600;
             }
@@ -145,25 +122,88 @@
             display: flex;
 
             .contacts {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
                 margin-right: 20px;
                 padding-right: 20px;
                 border-right: 1px solid rgba($darkBlue, 0.1);
+
+                p {
+                    font-size: 16px;
+                    font-weight: 600;
+                    line-height: 24px;
+                }
+            }
+
+            .interactive {
+                display: flex;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    margin-right: 12px;
+                }
+
+                svg {
+                    fill: rgba($darkBlue, 0.5);
+                }
             }
 
             .toBasket {
                 display: flex;
                 align-items: center;
 
-                svg {
-                    fill: $blueClick;
+                .basketCount {
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    svg {
+                        fill: $blue;
+                    }
+
+                    span {
+                        display: none;
+                    }
+
+                    & + span {
+                        margin-left: 8px;
+                        font-size: 16px;
+                        line-height: 24px;
+                        color: $blue;
+                    }
                 }
 
-                span {
-                    margin-left: 8px;
-                    font-size: 16px;
-                    line-height: 24px;
-                    color: $blueClick;
+                &.isNotEmpty {
+                    .basketCount {
+                        svg {
+                            fill: $blueClick;
+                        }
+
+                        span {
+                            position: absolute;
+                            top: -9px;
+                            right: -4px;
+                            display: block;
+                            font-size: 10px;
+                            line-height: 13px;
+                            border-radius: 1000px;
+                            padding: 0 4px;
+                            background-color: $red;
+                            color: $white;
+                        }
+
+                        & + span {
+                            color: $blueClick;
+                        }
+                    }
                 }
+            }
+
+            .hamburger {
+                display: none;
             }
         }
     }
@@ -243,20 +283,6 @@
             }
 
             .mainMenu nav {
-                .hamburger {
-                    position: absolute;
-                    top: 13px;
-                    right: 0;
-
-                    .opened {
-                        display: flex;
-                    }
-
-                    .closed {
-                        display: none;
-                    }
-                }
-
                 ul {
                     flex-direction: column;
 

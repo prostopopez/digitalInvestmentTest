@@ -1,18 +1,18 @@
 module.exports = [
     {
         name: 'Новости и блог',
-        src: '../news'
+        link: '../news'
     },
     {
         name: 'Оплата и доставка',
-        src: '../paymentDelivery'
+        link: '../paymentDelivery'
     },
     {
         name: 'Контакты',
-        src: '../contacts'
+        link: '../contacts'
     },
     {
         name: 'Вакансии',
-        src: '../vacancy'
+        link: '../vacancy'
     }
 ];
