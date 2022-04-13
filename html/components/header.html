@@ -82,4 +82,65 @@
         {% include '../../img/svg/hamburger.svg' with {'class': 'closed'} %}
         {% include '../../img/svg/hamburgerActive.svg' with {'class': 'opened'} %}
     </button>
+    <div class="mobileMenu">
+        <div class="upper">
+            <h3>Меню</h3>
+            <div class="dropdown modal langChange">
+                <div class="dropTrigger">
+                    <p>RU</p>
+                    {% include '../../img/svg/arrowTip.svg' %}
+                </div>
+                <ul class="dropContent">
+                    <li class="active"><label>
+                        <span>RU</span>
+                        <input type="radio" name="lang" value="ru" checked>
+                    </label></li>
+                    <li><label>
+                        <span>EN</span>
+                        <input type="radio" name="lang" value="en">
+                    </label></li>
+                </ul>
+            </div>
+            <label class="search">
+                <input class="inputField" type="text" placeholder="Поиск..." id="mobileSearch">
+                {% include '../../img/svg/search.svg' %}
+            </label>
+        </div>
+        <nav>
+            <ul>
+                {% for item in mainMenuData %}
+                {% if item.type == 'dropdown' %}
+                <li class="dropdown">
+                    <div class="dropTrigger">
+                        <p>{{item.name}}</p>
+                        {% include '../../img/svg/arrowTip.svg' %}
+                    </div>
+                    <ul class="dropContent">
+                        {% for element in item.elements %}
+                        <li>
+                            <a href="{{element.link}}">{{element.name}}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% else %}
+                <li><a href='{{item.link}}'>{{item.name}}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% for item in secondaryMenuData %}
+                <li><a href="{{item.link}}">{{item.name}}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+        <div class="mobContacts">
+            <div>
+                <p class="tel">+7 (499) 877-41-45</p>
+                <div>
+                    <a href="https://web.telegram.org"> {% include '../../img/svg/telegram.svg' %}</a>
+                    <a href="https://www.whatsapp.com"> {% include '../../img/svg/whatsapp.svg' %}</a>
+                </div>
+            </div>
+            <button>Заказать звонок</button>
+        </div>
+    </div>
 </header>

@@ -13,17 +13,20 @@
         align-items: center;
     }
 
-    nav > ul {
-        display: flex;
-
-        > li {
+    .secondaryMenu,
+    .mainMenu {
+        nav > ul {
             display: flex;
-            align-items: center;
-            text-align: center;
-            padding: 0 25px;
 
-            &:last-of-type {
-                margin-right: 0;
+            > li {
+                display: flex;
+                align-items: center;
+                text-align: center;
+                padding: 0 25px;
+
+                &:last-of-type {
+                    margin-right: 0;
+                }
             }
         }
     }
@@ -231,6 +234,10 @@
         display: none;
     }
 
+    .mobileMenu {
+        display: none;
+    }
+
     @media only screen and (max-width: 768px) {
         flex-direction: row;
         justify-content: space-between;
@@ -331,10 +338,78 @@
                     display: none;
                 }
             }
+
+            .mobileMenu {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 50px;
+                right: 0;
+                padding: 14px 0;
+                height: 100vh;
+                z-index: 1005;
+                box-shadow: 0 60px 96px rgba(0, 0, 0, 0.007), 0 30px 48px rgba(0, 0, 0, 0.01), 0 18px 29px rgba(0, 0, 0, 0.01), 0 12px 19px rgba(0, 0, 0, 0.015), 0 8px 12px rgba(0, 0, 0, 0.02), 0 5px 8px rgba(0, 0, 0, 0.02), 0 3px 4px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.03);
+                background-color: $white;
+
+                .wrapper {
+                    flex-direction: column;
+                    padding: 0;
+                }
+
+                .upper {
+                    display: flex;
+                    flex-direction: column;
+                    border-bottom: 1px solid #D2D9DF;
+                    padding: 24px;
+
+                    h3 {
+                        margin-bottom: 16px;
+                    }
+
+                    .langChange {
+                        display: none;
+                    }
+                }
+
+                nav {
+                    overflow-y: scroll;
+                }
+
+                nav > ul {
+                    display: flex;
+                    flex-direction: column;
+                    padding: 16px 12px 32px 24px;
+
+                    .dropTrigger svg {
+                        width: 7px;
+                        height: 7px;
+                        fill: $blue;
+                    }
+
+                    .dropTrigger,
+                    li:not(.dropdown) {
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                    }
+
+                    a,
+                    p {
+                        font-size: 16px;
+                        font-weight: 600;
+                        line-height: 20px;
+                    }
+                }
+
+                .mobContacts {
+                    display: none;
+                }
+            }
         }
     }
 
     @media only screen and (max-width: 480px) {
+        box-shadow: none;
+
         .secondaryMenu,
         .mainMenu .menuInfo .socials,
         .mainMenu .menuInfo .contacts,
@@ -343,10 +418,81 @@
         }
 
         .mainMenu {
+            z-index: 1006;
             width: 100%;
+            box-shadow: 0 60px 96px rgba(0, 0, 0, 0.007), 0 30px 48px rgba(0, 0, 0, 0.01), 0 18px 29px rgba(0, 0, 0, 0.01), 0 12px 19px rgba(0, 0, 0, 0.015), 0 8px 12px rgba(0, 0, 0, 0.02), 0 5px 8px rgba(0, 0, 0, 0.02), 0 3px 4px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.03);
 
             .wrapper {
                 margin: 0 0 0 auto;
+            }
+        }
+
+        &.mobile .mobileMenu {
+            padding: 0 12px;
+            width: 100%;
+
+            .upper {
+                border-bottom: none;
+                padding: 24px 0 16px 0;
+                flex-direction: row;
+                align-items: center;
+
+                h3 {
+                    margin-bottom: 0;
+                    margin-right: 16px;
+                }
+
+                .langChange {
+                    display: flex;
+                    align-self: flex-end;
+                    margin-right: 16px;
+
+                    .dropContent {
+                        margin-top: 25px;
+                    }
+                }
+            }
+
+            nav {
+                border-bottom: 1px solid #D2D9DF;
+            }
+
+            nav > ul {
+                padding: 0 0 27px 0;
+            }
+
+            .mobContacts {
+                display: flex;
+                flex-direction: column;
+                padding: 12px 0 6px 0;
+
+                div {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    p {
+                        font-size: 22px;
+                        font-weight: 600;
+                        line-height: 32px;
+                        color: $blue;
+                    }
+
+                    a {
+                        margin-right: 12px;
+
+                        svg {
+                            width: 22px;
+                            height: 22px;
+                            fill: rgba($darkBlue, 0.5);
+                        }
+                    }
+                }
+
+                button {
+                    align-self: flex-start;
+                    padding: 6px 0;
+                }
             }
         }
     }
