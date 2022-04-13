@@ -29,6 +29,8 @@
     }
 
     .secondaryMenu {
+        display: flex;
+        align-items: center;
         padding: 5px 0;
         background-color: $darkBlue;
 
@@ -97,6 +99,8 @@
     }
 
     .mainMenu {
+        display: flex;
+        align-items: center;
         padding: 8px 0;
         white-space: nowrap;
 
@@ -237,8 +241,6 @@
         }
 
         .secondaryMenu {
-            display: flex;
-            align-items: center;
             padding: 6px 0;
             width: 50%;
             background-color: $white;
@@ -328,6 +330,23 @@
                 .closed {
                     display: none;
                 }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        .secondaryMenu,
+        .mainMenu .menuInfo .socials,
+        .mainMenu .menuInfo .contacts,
+        .mainMenu .menuInfo .toBasket span {
+            display: none;
+        }
+
+        .mainMenu {
+            width: 100%;
+
+            .wrapper {
+                margin: 0 0 0 auto;
             }
         }
     }
