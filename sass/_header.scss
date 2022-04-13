@@ -98,13 +98,22 @@
 
     .mainMenu {
         padding: 8px 0;
+        white-space: nowrap;
 
         .wrapper {
             justify-content: flex-end;
+
+            @media only screen and (max-width: 1280px) {
+                justify-content: space-between;
+            }
         }
 
         nav {
             margin-right: 130px;
+
+            @media only screen and (max-width: 1280px) {
+                margin-right: 0;
+            }
         }
 
         nav > ul {
@@ -113,8 +122,13 @@
 
             > li a,
             > li p {
-                white-space: nowrap;
                 font-weight: 600;
+            }
+
+            @media only screen and (max-width: 1024px) {
+                > li {
+                    padding-left: 0;
+                }
             }
         }
 
@@ -136,6 +150,7 @@
                 }
             }
 
+            .socials,
             .interactive {
                 display: flex;
 
@@ -148,6 +163,10 @@
                 svg {
                     fill: rgba($darkBlue, 0.5);
                 }
+            }
+
+            .socials {
+                display: none;
             }
 
             .toBasket {
@@ -201,103 +220,115 @@
                     }
                 }
             }
-
-            .hamburger {
-                display: none;
-            }
         }
     }
 
-    @media only screen and (max-width: 1024px) {
-        &.mobile {
-            overflow-y: scroll;
-            justify-content: center;
-            align-items: flex-start;
-            position: absolute;
-            top: 0;
-            left: 0;
-            padding: 14px 0;
-            height: 100%;
-            z-index: 1005;
-
-            .wrapper {
-                flex-direction: column;
-                padding: 0;
-            }
-
-            .secondaryMenu {
-                order: 1;
-
-                .forLogo {
-                    display: none;
-                }
-
-                .contacts {
-                    align-items: center;
-                    width: 100%;
-
-                    > * {
-                        margin-bottom: 15px;
-                    }
-
-                    .socialsTel {
-                        flex-direction: column;
-
-                        div {
-                            justify-content: space-evenly;
-                            margin-bottom: 15px;
-
-                            .socialLink {
-                                margin-right: 0;
-                            }
-                        }
-
-                        p {
-                            margin: 0;
-                        }
-                    }
-                }
-            }
-
-            .mainMenu {
-                order: 0;
-                flex-direction: column;
-                margin-bottom: 50px;
-
-                .forMenu {
-                    flex-direction: column;
-
-                    .toHome {
-                        margin-right: 0;
-                        margin-bottom: 15px;
-                    }
-                }
-            }
-
-            .secondaryMenu .contacts,
-            .secondaryMenu .clinicsNearby,
-            .toHome,
-            .mainMenu ul,
-            .interactive {
-                display: flex;
-            }
-
-            .mainMenu nav {
-                ul {
-                    flex-direction: column;
-
-                    li {
-                        margin-right: 0;
-                        margin-bottom: 15px;
-                        padding-right: 0;
-                        border: none;
-                    }
-                }
-            }
-        }
+    .hamburger {
+        display: none;
     }
 
     @media only screen and (max-width: 768px) {
+        flex-direction: row;
+        justify-content: space-between;
 
+        .wrapper {
+            width: initial;
+            max-width: initial;
+        }
+
+        .secondaryMenu {
+            display: flex;
+            align-items: center;
+            padding: 6px 0;
+            width: 50%;
+            background-color: $white;
+
+            nav,
+            .search {
+                display: none;
+            }
+        }
+
+        .langChange {
+            .dropTrigger p {
+                color: rgba($darkBlue, 0.5);
+            }
+        }
+
+        .mainMenu {
+            padding: 6px 0;
+
+            nav {
+                display: none;
+            }
+
+            .menuInfo {
+                .socials {
+                    display: flex;
+
+                    a {
+                        margin-right: 22px;
+                    }
+                }
+
+                .contacts {
+                    margin-right: 16px;
+                    padding-right: 16px;
+
+                    p {
+                        font-size: 14px;
+                        font-weight: 400;
+                        line-height: 20px;
+                    }
+
+                    .interactive a {
+                        display: none;
+                    }
+
+                    .interactive button {
+                        font-size: 12px;
+                        line-height: 18px;
+                    }
+                }
+
+                .toBasket {
+                    margin-right: 20px;
+                }
+            }
+        }
+
+        .hamburger {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 13px;
+            background-color: $blue;
+
+            svg {
+                width: 24px;
+                fill: $white;
+            }
+
+            svg.opened {
+                display: none;
+                z-index: 1010;
+            }
+
+            svg.closed {
+                display: block;
+            }
+        }
+
+        &.mobile {
+            .hamburger {
+                .opened {
+                    display: flex;
+                }
+
+                .closed {
+                    display: none;
+                }
+            }
+        }
     }
 }

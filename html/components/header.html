@@ -56,6 +56,10 @@
                 </ul>
             </nav>
             <div class="menuInfo">
+                <div class="socials">
+                    <a href="https://web.telegram.org"> {% include '../../img/svg/telegram.svg' %}</a>
+                    <a href="https://www.whatsapp.com"> {% include '../../img/svg/whatsapp.svg' %}</a>
+                </div>
                 <div class="contacts">
                     <p class="tel">+7 (499) 877-41-45</p>
                     <div class="interactive">
@@ -71,10 +75,11 @@
                     </div>
                     <span>Корзина</span>
                 </a>
-                <button class="hamburger">
-                    {% include '../../img/svg/hamburger.svg' %}
-                    {% include '../../img/svg/hamburgerActive.svg' %}
-                </button>
             </div>
         </div>
+    </div>
+    <button class="hamburger">
+        {% include '../../img/svg/hamburger.svg' with {'class': 'closed'} %}
+        {% include '../../img/svg/hamburgerActive.svg' with {'class': 'opened'} %}
+    </button>
 </header>
